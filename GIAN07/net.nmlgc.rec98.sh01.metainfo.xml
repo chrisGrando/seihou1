@@ -53,6 +53,17 @@
 	<content_rating type="oars-1.1" />
 
 	<releases>
+		<release version="P0341" date="2026-10-05">
+			<description>
+				<p>Added a command-line tool that demonstrates rapid replay validation and desync detection, using the newly isolated headless game logic library. Run it with <code>flatpak run --command=ssg_cli --filesystem=host net.nmlgc.rec98.sh01 /path/to/秋霜りぷ*.DAT</code>.</p>
+				<p>Also fixed two bugs from the original game:</p>
+				<ul>
+					<li>Score popups from point items collected with negative values are now correctly rendered as such, with a preceding minus sign</li>
+					<li>The Weapon Select screen for 6-stage main game now correctly allows all shot types after a trying to play a nonexistent Extra Stage replay</li>
+				</ul>
+				<p>Final release before my retirement.</p>
+			</description>
+		</release>
 		<release version="P0326" date="2025-10-19">
 			<description>
 				<p>Minor maintenance and Freedesktop SDK update release. Now also built with GCC!</p>
