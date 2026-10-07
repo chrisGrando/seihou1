@@ -1,7 +1,7 @@
 @echo off
 
-:: If you use a non-default installation path for Git For Windows, please insert it in the variable below (without quotation marks)!
-set GIT_PATH=
+:: If you use a non-default installation path for Git For Windows, please insert it in the variable below (within the quotation marks)!
+set "GIT_PATH="
 
 :: Checking if MSVC is avaliable
 if not defined VCINSTALLDIR goto MSVC_NOT_FOUND
@@ -9,9 +9,9 @@ if not defined VCINSTALLDIR goto MSVC_NOT_FOUND
 :: Searching for default installation of Git For Windows if not specified already
 if "%GIT_PATH%" == "" (
 	:: 32 Bits
-	if exist "%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe" set GIT_PATH=%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe
+	if exist "%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe" set "GIT_PATH=%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe"
 	:: 64 Bits
-	if exist "%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe" set GIT_PATH=%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe
+	if exist "%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe" set "GIT_PATH=%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe"
 )
 
 :: Abort if Git For Windows is absent

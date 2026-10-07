@@ -10,9 +10,9 @@ if not defined VCINSTALLDIR (
 :: Searching for default installation of Git For Windows if not set already
 if not defined GIT_PATH (
 	:: 32 Bits
-	if exist "%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe" set GIT_PATH=%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe
+	if exist "%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe" set "GIT_PATH=%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe"
 	:: 64 Bits
-	if exist "%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe" set GIT_PATH=%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe
+	if exist "%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe" set "GIT_PATH=%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe"
 
 	:: Abort if Git For Windows is absent
 	if not defined GIT_PATH (
@@ -23,7 +23,7 @@ if not defined GIT_PATH (
 )
 
 :: Set up dependencies sub-modules
-call "%PROGRAMFILES%\Git\bin\sh.exe" --login "%~dp0submodules_check.sh" ^
+call "%GIT_PATH%" --login "%~dp0submodules_check.sh" ^
 	"%~dp0libs\9xcompat" ^
 	"%~dp0libs\BLAKE3" ^
 	"%~dp0libs\dr_libs" ^
