@@ -1,5 +1,7 @@
 # Seihou Project ~ Shuusou Gyoku (aka Seihou 1)
 
+>NOTE: This branch makes available some features that were exclusive to the debug builds.
+
 ## Building
 
 This project uses [Tup](https://gittup.org/tup/) as its build system, so install a fitting version for your operating system.
