@@ -111,10 +111,10 @@ namespace Dif {
 static void FnPlayerStock(int_fast8_t delta);
 static void FnBombStock(int_fast8_t delta);
 static void FnDifficulty(int_fast8_t delta);
-#ifdef PBG_DEBUG
 static void FnMsgDisplay(int_fast8_t delta);
 static void FnStgSelect(int_fast8_t delta);
 static void FnMaxLives(int_fast8_t delta);
+#ifdef PBG_DEBUG
 static void FnDemo(int_fast8_t delta);
 #endif
 static void SetItem(bool tick = true);
@@ -124,7 +124,6 @@ WINDOW_CHOICE Item[] = {
 	{ Title[0], "残り人数?を設定します", FnPlayerStock },
 	{ Title[1], "ボムの数を設定します", FnBombStock },
 	{ Title[2], "難易度を設定します", FnDifficulty },
-#ifdef PBG_DEBUG
 	HRuleItemForArray,
 	{ Title[3], "[DebugMode] 画面に情報を表示するか", FnMsgDisplay },
 	{ Title[4], "[DebugMode] ステージセレクト", FnStgSelect },
@@ -132,10 +131,11 @@ WINDOW_CHOICE Item[] = {
 		Title[5],
 		"(Not 255! Game spawns 3 and addition wraps)",
 		FnMaxLives,
-	},
-	{ Title[6], "[DebugMode] デモプレイセーブ", FnDemo },
+	}
+#ifdef PBG_DEBUG
+	, { Title[6], "[DebugMode] デモプレイセーブ", FnDemo }
 #endif
-	SubmenuExitItemForArray,
+	, SubmenuExitItemForArray
 };
 WINDOW_MENU Menu = { std::span(Item), SetItem };
 } // namespace Dif
@@ -508,7 +508,6 @@ static void Main::Cfg::Dif::FnDifficulty(int_fast8_t delta)
 	RingStep(ConfigDat.LevelSelected.v, delta, GAME_EASY, GAME_LUNATIC);
 }
 
-#ifdef PBG_DEBUG
 static void Main::Cfg::Dif::FnMsgDisplay(int_fast8_t)
 {
 	DebugDat.MsgDisplay = !DebugDat.MsgDisplay;
@@ -524,6 +523,7 @@ static void Main::Cfg::Dif::FnMaxLives(int_fast8_t)
 	DebugDat.NoMaxLives = !DebugDat.NoMaxLives;
 }
 
+#ifdef PBG_DEBUG
 static void Main::Cfg::Dif::FnDemo(int_fast8_t)
 {
 	DebugDat.DemoSave = !DebugDat.DemoSave;
@@ -947,11 +947,11 @@ static void Main::Cfg::Dif::SetItem(bool)
 	sprintf(Title[1], "BombStock   [ %d ]", ConfigDat.BombStock.v);
 	sprintf(Title[2], "Difficulty[%s]", dif[ConfigDat.LevelSelected.v]);
 
-#ifdef PBG_DEBUG
 	const auto max_life_choice = CHOICE_OFF_ON[!DebugDat.NoMaxLives];
 	sprintf(Title[3], "DebugOut  %s", CHOICE_OFF_ON[DebugDat.MsgDisplay]);
 	sprintf(Title[4], "StgSelect [  %d  ]", DebugDat.StgSelect);
 	sprintf(Title[5], "%dLives  %s", DEBUG_MAX_LIVES, max_life_choice);
+#ifdef PBG_DEBUG
 	sprintf(Title[6], "DemoSave  %s", CHOICE_OFF_ON[DebugDat.DemoSave]);
 #endif
 }

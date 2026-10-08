@@ -151,7 +151,7 @@ struct CONFIG_DATA {
 // Active configuration
 extern CONFIG_DATA ConfigDat;
 
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 // We subtract 3 because game logic doesn't check for overflow when collecting
 // lives. A player should still be able to collect the 3 extra lives spawned
 // across the 6 main stages without overflowing the life counter to 0.
@@ -189,7 +189,7 @@ typedef struct tagDEBUG_DATA{
 } DEBUG_DATA;
 
 extern DEBUG_DATA DebugDat;
-#endif
+//#endif
 
 ///// [関数] /////
 

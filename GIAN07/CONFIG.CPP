@@ -317,11 +317,11 @@ void CONFIG_DATA::GraphicsParamsApply(const GRAPHICS_PARAMS& params)
 
 ///// [グローバル変数] /////
 CONFIG_DATA ConfigDat;
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 DEBUG_DATA DebugDat;
-#endif
+//#endif
 
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 static void DebugInit(void)
 {
 	auto *f = SDL_IOFromFile(DBG_FN, "rb");
@@ -336,14 +336,14 @@ static void DebugInit(void)
 	}
 	SDL_CloseIO(f);
 }
-#endif
+//#endif
 
 // コンフィグの内容を初期化する //
 extern void ConfigLoad()
 {
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 	DebugInit();
-#endif
+//#endif
 
 	std::apply([](const auto&... version) {
 		(... || VersionLoad(version));
@@ -387,7 +387,7 @@ extern void ConfigSave(void)
 		(..., VersionSave(version));
 	}, VERSIONS);
 
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 	SDL_SaveFile(DBG_FN, &DebugDat, sizeof(DebugDat));
-#endif
+//#endif
 }

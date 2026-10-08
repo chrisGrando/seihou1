@@ -11,10 +11,10 @@
 #include "HUD.H"
 #include "FONTUTY.H"
 #include "LogicInstance.h"
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 #include "CONFIG.H"
 #include "SCROLL.H"
-#endif
+//#endif
 #include "hatoyama/engine/text_backend.h"
 #include "hatoyama/app/time.h"
 #include "hatoyama/logic/ut_math.h"
@@ -231,11 +231,11 @@ void StdStatusOutput(void)
 	const char *const DItem[4] = { "Easy", "Norm", "Hard", "Luna" };
 	char buf[100];
 
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 	if(!DebugDat.MsgDisplay) {
 		return;
 	}
-#endif
+//#endif
 
 	const auto now = Time_SteadyTicksMS();
 	if((now - prev) <= 1000) {
@@ -249,7 +249,7 @@ void StdStatusOutput(void)
 	sprintf(buf, "%03u FPS", fps);
 	GrpPut16(0, 0, buf);
 
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 #ifdef SUPPORT_GRP_BITDEPTH
 	sprintf(buf, "%2dBppMode", ConfigDat.BitDepth.v.value());
 	GrpPut16(0, 32, buf);
@@ -295,10 +295,10 @@ void StdStatusOutput(void)
 	GrpPut16(column2_left, 100, "SCL Count");
 	sprintf(buf, " %5d", SSG.Stage.SCLCount());
 	GrpPut16(column2_left, 120, buf);
-#else
+//#else
 	// GrpPut16(0,440,"G07");
 	// GrpPut16(0,460,"12/5 Ver");
-#endif
+//#endif
 
 	const auto tm = Time_NowLocal();
 

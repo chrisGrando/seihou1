@@ -1130,11 +1130,11 @@ void WeaponSelectProc(bool&)
 			else{
 				SSG.Round.Exp = 255;
 			}
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 			if(!DebugDat.NoMaxLives) {
 				SSG.Round.PlayerStock = DEBUG_MAX_LIVES;
 			}
-#endif
+//#endif
 			if(record) {
 				SSG.Round.Seed = (
 					(Cast::up<uint32_t>(SSG.RNG.next()) + 1u) *
@@ -1319,9 +1319,9 @@ void TitleProc(bool& quit)
 		// Placing this here avoids flickering with the Vulkan backend if any
 		// of the above windows had to re-render text?!
 		Version::Render(438);
-#ifdef PBG_DEBUG
+//#ifdef PBG_DEBUG
 		StdStatusOutput();
-#endif
+//#endif
 
 		Grp_Flip();
 	}
